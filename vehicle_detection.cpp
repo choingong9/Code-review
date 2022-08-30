@@ -40,7 +40,17 @@ int main(int argc, char** argv)
   IplImage* frame1 = cvQueryFrame(capture);
   frame = cvCreateImage(cvSize((int)((frame1->width*input_resize_percent)/100) , (int)((frame1->height*input_resize_percent)/100)), frame1->depth, frame1->nChannels);
 
+  int key = 0;
+   do
+   {
+     frame1 = cvQueryFrame(capture);
+     
+     if(!frame1)
+     {
+        wait(500);
+        std::cout << "frame 정보가 없습니다.";
 
+     }
 
     cvResize(frame1, frame);
 
